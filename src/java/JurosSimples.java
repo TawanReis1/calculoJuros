@@ -41,39 +41,29 @@ public class JurosSimples extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet - Calculo de juros simples " + request.getContextPath() + "</h1>");
             out.println("<form>");
-            out.println("Capital: <input type='text' name='capital'/>");
-            out.println("Juros ao mês: <input type='text' name='juros'/>");
-            out.println("Tempo: <input type='text' name='tempo'/>");
+            out.println("Capital: <input type='float' name='capital'/>");
+            out.println("Juros ao mês: <input type='float' name='juros'/>");
+            out.println("Tempo: <input type='float' name='tempo'/>");
             out.println("<input type='submit' value='Calcular'>");
             out.println("</form>");
-            
-                String result = "<h1>NUMEROS INVALIDOS</h1>";                
+                       
+                             
                 double capital = Double.parseDouble(request.getParameter("capital"));
                 double juros = Double.parseDouble(request.getParameter("juros"));
                 double tempo = Double.parseDouble(request.getParameter("tempo"));
                 double jurosMes = juros / 100;
                     
                 if (capital != 0 && tempo != 0){
-                try{
-                    capital += capital * jurosMes * tempo;
-                    out.println("<h1>R$ "+capital+"</h1>");
+               
+                    double montante = capital * jurosMes * tempo;
+                    out.println("<h1>R$ "+montante+"</h1>");
                 
-                }catch(Exception ex){
-                        out.println("<h1>" + result + "</h1>");
-                        }
-                }
-                
-                
-        
-         
-                
-                    
-                
-          
-         
-          
-            
-            
+                }else{
+                        out.println("<h1> NUMEROS INVALIDOS</h1>");
+                        
+                }                              
+                                                
+                                       
             out.println("<hr>");
             out.println("<h3><a href='index.html'> VOLTAR</h3>");
             out.println("</body>");

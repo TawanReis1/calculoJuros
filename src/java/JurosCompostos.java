@@ -47,22 +47,23 @@ public class JurosCompostos extends HttpServlet {
             out.println("Tempo: <input type='text' name='tempo'/>");
             out.println("<input type='submit' value='Calcular'>");
             out.println("</form>");
-            
-          
+                                                          
+                                   
                     double capital = Double.parseDouble(request.getParameter("capital"));
                     double juros = Double.parseDouble(request.getParameter("juros"));
                     double tempo = Double.parseDouble(request.getParameter("tempo"));
                     double jurosMes = juros /100;
-                    
-                    if (capital != 0 && tempo != 0){
+                    if(capital != 0 && tempo!=0){                            
+                       
                     out.println("<table>");
                     out.println("<tr>");
                     out.println("<th> Capital </th>");
                     out.println("<th> Numero do mes </th>");
                     out.println("</tr");
+                    //  MOntante = capital * (1+juros) ^ tempo
                     for (double tempoMes=1; tempoMes<= tempo; tempoMes++){
                     out.println("<tr>");
-                    capital += (jurosMes * capital);
+                    capital += capital * jurosMes;                                      
                     out.println("<td> R$"+  capital + "</td></hr>");
                     out.println("<td>" + tempoMes + "</td></hr>");
                     }               
@@ -72,25 +73,19 @@ public class JurosCompostos extends HttpServlet {
                     out.println("</table>");
                     }else{
                         out.println("<h1>VALORES INVALIDOS</h1>");
-        
-                     
-                        
-         
-        
-            
-          
-            
+                    }
+                    
+                                       
+                                   
+                           
                       
-                        
             out.println("<hr>");
             out.println("<h3><a href='index.html'> VOLTAR</h3>");
             out.println("</body>");
             out.println("</html>");
         }
-        }
+     
     }
-    
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -130,4 +125,7 @@ public class JurosCompostos extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    }
+    
+
+    
+}
